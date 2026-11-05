@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "displayName": { "type": "string", "maxLength": 100 },
+        "email": { "type": "string", "maxLength": 255 },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "createdAt"]
+    },
+    "Command": {
+      "title": "Command",
+      "description": "A generated or custom GPT Slash Command specification",
+      "type": "object",
+      "properties": {
+        "commandId": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 100 },
+        "category": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 500 },
+        "instructions": { "type": "string", "maxLength": 15000 },
+        "parameters": { "type": "string", "maxLength": 3000 },
+        "examples": { "type": "string", "maxLength": 5000 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "usageCount": { "type": "integer" },
+        "isFavorite": { "type": "boolean" }
+      },
+      "required": ["commandId", "userId", "name", "category", "description", "instructions"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Slash command categories taxonomy",
+      "type": "object",
+      "properties": {
+        "categoryId": { "type": "string", "maxLength": 64 },
+        "name": { "type": "string", "maxLength": 64 },
+        "slug": { "type": "string", "maxLength": 64 },
+        "description": { "type": "string", "maxLength": 255 },
+        "icon": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["categoryId", "name", "slug"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Stores user account information"
+    },
+    "/commands/{commandId}": {
+      "schema": "Command",
+      "description": "Stores user slash commands"
+    },
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Stores standard command categories"
+    }
+  }
+}

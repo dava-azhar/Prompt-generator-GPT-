@@ -1,0 +1,6 @@
+{
+  "name": "HarrisDev GPT Slash Command Generator",
+  "description": "Platform generator GPT Slash Command profesional karya HarrisDev Studio. Create Commands. Unlock Intelligence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
